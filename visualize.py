@@ -23,9 +23,10 @@ def draw_border(img, top_left, bottom_right, color=(0, 255, 0), thickness=10, li
 
     return img
 
-
+print("read interpolated.csv");
 results = pd.read_csv('./test_interpolated.csv')
 
+print("read video");
 # load video
 video_path = 'sample.mp4'
 cap = cv2.VideoCapture(video_path)
@@ -34,10 +35,19 @@ fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # Specify the codec
 fps = cap.get(cv2.CAP_PROP_FPS)
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+print("write video out.mp4");
 out = cv2.VideoWriter('./out.mp4', fourcc, fps, (width, height))
 
+print("processing license plate")
 license_plate = {}
+print("size: {}".format(np.size(np.unique(results['car_id']))))
+print("frame size: {}".format(np.size(results)));
+counter=0;
 for car_id in np.unique(results['car_id']):
+    counter = counter+1;
+    print("counter: {}".format(counter));
+    
     max_ = np.amax(results[results['car_id'] == car_id]['license_number_score'])
     license_plate[car_id] = {'license_crop': None,
                              'license_plate_number': results[(results['car_id'] == car_id) &
@@ -61,9 +71,13 @@ cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
 
 # read frames
 ret = True
+print("reading frames")
+
 while ret:
     ret, frame = cap.read()
     frame_nmr += 1
+    if frame_nmr % 100 == 0:
+        print("frame number : {}".format(frame_nmr));
     if ret:
         df_ = results[results['frame_nmr'] == frame_nmr]
         for row_indx in range(len(df_)):
@@ -108,8 +122,8 @@ while ret:
         out.write(frame)
         frame = cv2.resize(frame, (1280, 720))
 
-        # cv2.imshow('frame', frame)
-        # cv2.waitKey(0)
+        #cv2.imshow('frame', frame)
+        #cv2.waitKey(0)
 
 out.release()
 cap.release()
