@@ -20,8 +20,14 @@ A licensed plate detector was used to detect license plates. The model was train
 ## Dependencies
 
 The sort module needs to be downloaded from [this repository](https://github.com/abewley/sort).
-
-## Wsl2 dependencies
+## WSL2 setup
+```bash
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-get update
+sudo apt-get install python3.8
+sudo apt install python3.8-venv
+```
+## Wsl2 other dependencies
 ```bash
 sudo apt-get install python3.8-dev
 sudo apt-get install gcc
@@ -29,17 +35,20 @@ sudo apt-get install libssl-dev libffi-dev      libxml2-dev libxslt1-dev zlib1g-
 sudo apt install g++
 sudo apt-get install python3.8-tk
 ```
+* install sort module from [this repository](https://github.com/abewley/sort)
+
+
+
+
 
 ## Project Setup
 
-* Make an environment with python=3.8 using the following command 
-``` bash
-conda create --prefix ./env python==3.8 -y
+* Setup virtual environment 
+```bash
+python3.8 -m venv lprenv
 ```
-* Activate the environment
-``` bash
-conda activate ./env
-``` 
+* Activate environment
+source lprenv/bin/activate
 
 * Install the project dependencies using the following command 
 ```bash
