@@ -54,10 +54,15 @@ source lprenv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-* Run main.py with the sample video file to generate the test.csv file 
+* Download sample video file from [here](https://drive.google.com/file/d/1JbwLyqpFCXmftaJY1oap8Sa6KfjoWJta/view?usp=sharing)
+
+* Run main.py with the sample video file to generate the test.csv file
 ``` python
 python main.py
 ```
+
+## Visualizing result
+
 * Run the add_missing_data.py file for interpolation of values to match up for the missing frames and smooth output.
 ```python
 python add_missing_data.py
