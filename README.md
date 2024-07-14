@@ -1,4 +1,7 @@
 # Automatic-Number-Plate-Recognition-YOLOv8
+
+This repo is forked from https://github.com/Muhammad-Zeerak-Khan/Automatic-License-Plate-Recognition-using-YOLOv8.
+
 ## Demo
 
 
@@ -21,25 +24,26 @@ A licensed plate detector was used to detect license plates. The model was train
 
 The sort module needs to be downloaded from [this repository](https://github.com/abewley/sort).
 ## WSL2 setup
+
+* Install python 3.8 in ubuntu
+
 ```bash
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get update
 sudo apt-get install python3.8
 sudo apt install python3.8-venv
 ```
-## Wsl2 other dependencies
+
+* Install other dependencies
 ```bash
 sudo apt-get install python3.8-dev
 sudo apt-get install gcc
-sudo apt-get install libssl-dev libffi-dev      libxml2-dev libxslt1-dev zlib1g-dev
+sudo apt-get install libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
 sudo apt install g++
 sudo apt-get install python3.8-tk
 ```
+
 * install sort module from [this repository](https://github.com/abewley/sort)
-
-
-
-
 
 ## Project Setup
 
@@ -48,12 +52,17 @@ sudo apt-get install python3.8-tk
 python3.8 -m venv lprenv
 ```
 * Activate environment
+```bash
 source lprenv/bin/activate
+```
 
 * Install the project dependencies using the following command 
 ```bash
 pip install -r requirements.txt
 ```
+
+## Running sample video and get results
+
 * Download sample video file from [here](https://drive.google.com/file/d/1JbwLyqpFCXmftaJY1oap8Sa6KfjoWJta/view?usp=sharing)
 
 * Run main.py with the sample video file to generate the test.csv file
